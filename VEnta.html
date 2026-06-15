@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CreativeStudio — Cursos & Folletos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --white: #ffffff;
+    --black: #0a0a0a;
+    --gray-50: #f9f9f8;
+    --gray-100: #f0eeea;
+    --gray-200: #e0ddd6;
+    --gray-400: #9e9b94;
+    --gray-700: #3a3935;
+    --gray-900: #151513;
+    --accent: #2563eb;
+    --accent-light: #eff4ff;
+    --accent-dark: #1d4ed8;
+  }
+  body { font-family: 'Inter', sans-serif; background: var(--white); color: var(--gray-900); line-height: 1.6; font-size: 15px; }
+  nav { position: sticky; top: 0; background: rgba(255,255,255,0.95); backdrop-filter: blur(8px); border-bottom: 0.5px solid var(--gray-200); padding: 14px 48px; display: flex; align-items: center; justify-content: space-between; z-index: 100; }
+  .logo { font-family: 'Playfair Display', serif; font-weight: 600; font-size: 19px; color: var(--gray-900); letter-spacing: -0.3px; }
+  .logo span { color: var(--accent); }
+  .nav-links { display: flex; gap: 28px; list-style: none; align-items: center; }
+  .nav-links a { text-decoration: none; color: var(--gray-700); font-size: 14px; font-weight: 400; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--gray-900); }
+  .btn-primary { background: var(--gray-900); color: var(--white); border: none; padding: 9px 20px; border-radius: 6px; font-size: 14px; font-weight: 500; cursor: pointer; font-family: 'Inter', sans-serif; transition: background 0.2s; }
+  .btn-primary:hover { background: var(--gray-700); }
+  .btn-secondary { background: transparent; color: var(--gray-900); border: 0.5px solid var(--gray-200); padding: 9px 20px; border-radius: 6px; font-size: 14px; font-weight: 500; cursor: pointer; font-family: 'Inter', sans-serif; transition: border-color 0.2s, background 0.2s; }
+  .btn-secondary:hover { border-color: var(--gray-700); background: var(--gray-50); }
+  .hero { padding: 96px 48px 80px; max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+  .hero-eyebrow { display: inline-flex; align-items: center; gap: 6px; background: var(--accent-light); color: var(--accent-dark); font-size: 12px; font-weight: 500; padding: 5px 12px; border-radius: 99px; margin-bottom: 20px; letter-spacing: 0.02em; }
+  .hero h1 { font-family: 'Playfair Display', serif; font-size: 52px; font-weight: 600; line-height: 1.1; letter-spacing: -1px; color: var(--gray-900); margin-bottom: 20px; }
+  .hero h1 em { font-style: italic; color: var(--accent); }
+  .hero p { color: var(--gray-400); font-size: 16px; line-height: 1.7; margin-bottom: 32px; max-width: 420px; }
+  .hero-actions { display: flex; gap: 12px; align-items: center; }
+  .hero-stats { display: flex; gap: 32px; margin-top: 40px; padding-top: 32px; border-top: 0.5px solid var(--gray-200); }
+  .stat-number { font-size: 24px; font-weight: 600; color: var(--gray-900); display: block; }
+  .stat-label { font-size: 13px; color: var(--gray-400); font-weight: 400; }
+  .hero-visual { position: relative; height: 420px; background: var(--gray-50); border-radius: 24px; border: 0.5px solid var(--gray-200); overflow: hidden; display: flex; align-items: center; justify-content: center; }
+  .hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; padding: 24px; width: 100%; }
+  .mini-card { background: var(--white); border-radius: 10px; border: 0.5px solid var(--gray-200); padding: 16px; display: flex; flex-direction: column; gap: 8px; }
+  .mini-card-icon { width: 32px; height: 32px; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 16px; }
+  .mini-card h4 { font-size: 12px; font-weight: 500; color: var(--gray-900); }
+  .mini-card p { font-size: 11px; color: var(--gray-400); line-height: 1.4; }
+  .progress-bar { height: 3px; background: var(--gray-100); border-radius: 99px; margin-top: 4px; }
+  .progress-fill { height: 100%; border-radius: 99px; background: var(--accent); }
+  section { max-width: 1100px; margin: 0 auto; padding: 72px 48px; }
+  .section-eyebrow { font-size: 12px; font-weight: 500; color: var(--accent); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 12px; display: block; }
+  .section-title { font-family: 'Playfair Display', serif; font-size: 36px; font-weight: 600; color: var(--gray-900); letter-spacing: -0.5px; line-height: 1.15; }
+  .section-subtitle { color: var(--gray-400); font-size: 15px; margin-top: 10px; max-width: 480px; }
+  .filter-tabs { display: flex; gap: 8px; margin-bottom: 36px; flex-wrap: wrap; }
+  .filter-tab { padding: 7px 16px; border-radius: 99px; border: 0.5px solid var(--gray-200); font-size: 13px; cursor: pointer; background: transparent; color: var(--gray-700); font-family: 'Inter', sans-serif; transition: all 0.15s; }
+  .filter-tab.active { background: var(--gray-900); color: var(--white); border-color: var(--gray-900); }
+  .filter-tab:hover:not(.active) { border-color: var(--gray-700); }
+  .courses-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .course-card { background: var(--white); border: 0.5px solid var(--gray-200); border-radius: 16px; overflow: hidden; transition: transform 0.2s, border-color 0.2s; cursor: pointer; }
+  .course-card:hover { transform: translateY(-3px); border-color: var(--gray-400); }
+  .course-thumb { height: 160px; display: flex; align-items: center; justify-content: center; font-size: 40px; position: relative; }
+  .course-tag { position: absolute; top: 12px; left: 12px; background: rgba(255,255,255,0.9); border: 0.5px solid var(--gray-200); border-radius: 99px; padding: 3px 10px; font-size: 11px; font-weight: 500; color: var(--gray-700); }
+  .course-badge { position: absolute; top: 12px; right: 12px; background: var(--gray-900); color: var(--white); border-radius: 99px; padding: 3px 10px; font-size: 11px; font-weight: 500; }
+  .course-body { padding: 20px; }
+  .course-meta { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+  .course-level { font-size: 11px; font-weight: 500; color: var(--accent); text-transform: uppercase; letter-spacing: 0.05em; }
+  .course-duration { font-size: 12px; color: var(--gray-400); display: flex; align-items: center; gap: 4px; }
+  .course-card h3 { font-size: 15px; font-weight: 500; color: var(--gray-900); line-height: 1.4; margin-bottom: 8px; }
+  .course-card p { font-size: 13px; color: var(--gray-400); line-height: 1.55; margin-bottom: 16px; }
+  .course-footer { display: flex; align-items: center; justify-content: space-between; padding-top: 14px; border-top: 0.5px solid var(--gray-100); }
+  .price { font-size: 18px; font-weight: 600; color: var(--gray-900); }
+  .price-old { font-size: 13px; color: var(--gray-400); text-decoration: line-through; margin-right: 6px; }
+  .btn-card { background: var(--gray-900); color: var(--white); border: none; padding: 8px 16px; border-radius: 6px; font-size: 13px; font-weight: 500; cursor: pointer; font-family: 'Inter', sans-serif; display: flex; align-items: center; gap: 6px; transition: background 0.2s; }
+  .btn-card:hover { background: var(--accent); }
+  .separator { height: 0.5px; background: var(--gray-200); margin: 0 48px; }
+  .brochures-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+  .brochure-card { border: 0.5px solid var(--gray-200); border-radius: 10px; overflow: hidden; cursor: pointer; transition: transform 0.2s, border-color 0.2s; }
+  .brochure-card:hover { transform: translateY(-2px); border-color: var(--gray-400); }
+  .brochure-thumb { height: 200px; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 8px; position: relative; }
+  .brochure-thumb i { font-size: 32px; opacity: 0.6; }
+  .brochure-pages { position: absolute; bottom: 10px; right: 10px; background: rgba(0,0,0,0.5); color: white; border-radius: 6px; padding: 2px 8px; font-size: 11px; }
+  .brochure-body { padding: 14px; background: var(--white); }
+  .brochure-body h4 { font-size: 13px; font-weight: 500; color: var(--gray-900); margin-bottom: 4px; }
+  .brochure-body p { font-size: 12px; color: var(--gray-400); }
+  .brochure-footer { display: flex; align-items: center; justify-content: space-between; padding: 10px 14px; border-top: 0.5px solid var(--gray-100); background: var(--white); }
+  .brochure-price { font-size: 15px; font-weight: 600; color: var(--gray-900); }
+  .btn-sm { background: transparent; border: 0.5px solid var(--gray-200); color: var(--gray-700); padding: 5px 12px; border-radius: 6px; font-size: 12px; font-weight: 500; cursor: pointer; font-family: 'Inter', sans-serif; display: flex; align-items: center; gap: 4px; transition: all 0.15s; }
+  .btn-sm:hover { background: var(--gray-900); color: var(--white); border-color: var(--gray-900); }
+  .cta-section { background: var(--gray-900); margin: 0 48px 72px; border-radius: 24px; padding: 64px 72px; display: grid; grid-template-columns: 1fr auto; gap: 40px; align-items: center; }
+  .cta-section h2 { font-family: 'Playfair Display', serif; font-size: 36px; font-weight: 600; color: var(--white); letter-spacing: -0.5px; line-height: 1.2; margin-bottom: 10px; }
+  .cta-section p { color: rgba(255,255,255,0.5); font-size: 15px; }
+  .btn-white { background: var(--white); color: var(--gray-900); border: none; padding: 14px 28px; border-radius: 6px; font-size: 15px; font-weight: 500; cursor: pointer; font-family: 'Inter', sans-serif; white-space: nowrap; display: flex; align-items: center; gap: 8px; transition: background 0.2s; }
+  .btn-white:hover { background: var(--gray-100); }
+  footer { border-top: 0.5px solid var(--gray-200); padding: 40px 48px 32px; display: flex; align-items: center; justify-content: space-between; color: var(--gray-400); font-size: 13px; }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">Creative<span>Studio</span></div>
+  <ul class="nav-links">
+    <li><a href="#">Cursos</a></li>
+    <li><a href="#">Folletos</a></li>
+    <li><a href="#">Sobre mí</a></li>
+    <li><a href="#">Blog</a></li>
+  </ul>
+  <div style="display:flex;gap:10px">
+    <button class="btn-secondary">Iniciar sesión</button>
+    <button class="btn-primary">Empezar ahora</button>
+  </div>
+</nav>
+
+<div class="hero">
+  <div>
+    <div class="hero-eyebrow">✦ Diseño que comunica, branding que conecta</div>
+    <h1>Aprende diseño <em>gráfico</em> de forma profesional</h1>
+    <p>Cursos prácticos en diseño gráfico, branding e identidad visual. Aprende con proyectos reales y lleva tu creatividad al siguiente nivel.</p>
+    <div class="hero-actions">
+      <button class="btn-primary" style="padding:12px 24px;font-size:15px">Ver cursos →</button>
+      <button class="btn-secondary" style="padding:12px 24px;font-size:15px">Ver folletos</button>
+    </div>
+    <div class="hero-stats">
+      <div><span class="stat-number">1,240+</span><span class="stat-label">Estudiantes</span></div>
+      <div><span class="stat-number">18</span><span class="stat-label">Cursos activos</span></div>
+      <div><span class="stat-number">4.9 ★</span><span class="stat-label">Valoración</span></div>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="hero-grid">
+      <div class="mini-card">
+        <div class="mini-card-icon" style="background:#eff4ff">🎨</div>
+        <h4>Teoría del color</h4>
+        <p>Fundamentos esenciales</p>
+        <div class="progress-bar"><div class="progress-fill" style="width:78%"></div></div>
+      </div>
+      <div class="mini-card">
+        <div class="mini-card-icon" style="background:#f0fdf4">✦</div>
+        <h4>Identidad visual</h4>
+        <p>Módulo 3 de 6</p>
+        <div class="progress-bar"><div class="progress-fill" style="width:50%;background:#16a34a"></div></div>
+      </div>
+      <div class="mini-card">
+        <div class="mini-card-icon" style="background:#fff7ed">✍️</div>
+        <h4>Tipografía</h4>
+        <p>Nuevas lecciones</p>
+        <div class="progress-bar"><div class="progress-fill" style="width:30%;background:#ea580c"></div></div>
+      </div>
+      <div class="mini-card">
+        <div class="mini-card-icon" style="background:#faf5ff">⊞</div>
+        <h4>Layout & composición</h4>
+        <p>Inicio recomendado</p>
+        <div class="progress-bar"><div class="progress-fill" style="width:10%;background:#9333ea"></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="separator"></div>
+
+<section>
+  <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:36px">
+    <div>
+      <span class="section-eyebrow">Catálogo</span>
+      <h2 class="section-title">Cursos disponibles</h2>
+      <p class="section-subtitle">De fundamentos a proyectos avanzados de branding e identidad.</p>
+    </div>
+    <div class="filter-tabs">
+      <button class="filter-tab active">Todos</button>
+      <button class="filter-tab">Branding</button>
+      <button class="filter-tab">Tipografía</button>
+      <button class="filter-tab">Ilustración</button>
+    </div>
+  </div>
+  <div class="courses-grid">
+    <div class="course-card">
+      <div class="course-thumb" style="background:linear-gradient(135deg,#dbeafe,#bfdbfe)">
+        🎨
+        <span class="course-tag">Branding</span>
+        <span class="course-badge">Popular</span>
+      </div>
+      <div class="course-body">
+        <div class="course-meta">
+          <span class="course-level">Intermedio</span>
+          <span class="course-duration">⏱ 8 horas</span>
+        </div>
+        <h3>Diseño de identidad de marca desde cero</h3>
+        <p>Crea sistemas de identidad completos: logo, paleta, tipografía y guía de marca.</p>
+        <div class="course-footer">
+          <div><span class="price-old">$89</span><span class="price">$59</span></div>
+          <button class="btn-card">Inscribirse →</button>
+        </div>
+      </div>
+    </div>
+    <div class="course-card">
+      <div class="course-thumb" style="background:linear-gradient(135deg,#dcfce7,#bbf7d0)">
+        ✍️
+        <span class="course-tag">Tipografía</span>
+      </div>
+      <div class="course-body">
+        <div class="course-meta">
+          <span class="course-level">Básico</span>
+          <span class="course-duration">⏱ 5 horas</span>
+        </div>
+        <h3>Tipografía expresiva: más allá del texto</h3>
+        <p>Dominá el uso de la tipografía como elemento visual y narrativo en tus diseños.</p>
+        <div class="course-footer">
+          <div><span class="price">$39</span></div>
+          <button class="btn-card">Inscribirse →</button>
+        </div>
+      </div>
+    </div>
+    <div class="course-card">
+      <div class="course-thumb" style="background:linear-gradient(135deg,#fef9c3,#fde68a)">
+        🖌️
+        <span class="course-tag">Ilustración</span>
+        <span class="course-badge">Nuevo</span>
+      </div>
+      <div class="course-body">
+        <div class="course-meta">
+          <span class="course-level">Avanzado</span>
+          <span class="course-duration">⏱ 12 horas</span>
+        </div>
+        <h3>Ilustración vectorial para branding</h3>
+        <p>Ilustraciones que fortalecen una identidad de marca. Técnicas en Illustrator y Figma.</p>
+        <div class="course-footer">
+          <div><span class="price-old">$110</span><span class="price">$79</span></div>
+          <button class="btn-card">Inscribirse →</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="separator"></div>
+
+<section>
+  <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:36px">
+    <div>
+      <span class="section-eyebrow">Recursos</span>
+      <h2 class="section-title">Folletos descargables</h2>
+      <p class="section-subtitle">Guías en PDF para tener siempre a mano.</p>
+    </div>
+  </div>
+  <div class="brochures-grid">
+    <div class="brochure-card">
+      <div class="brochure-thumb" style="background:#eff4ff;color:#2563eb">
+        📄
+        <span style="font-size:11px;color:#2563eb;font-weight:500">Guía visual</span>
+        <span class="brochure-pages">24 pág</span>
+      </div>
+      <div class="brochure-body">
+        <h4>Manual de color para diseñadores</h4>
+        <p>Rueda, psicología y combinaciones</p>
+      </div>
+      <div class="brochure-footer">
+        <span class="brochure-price">$12</span>
+        <button class="btn-sm">↓ Comprar</button>
+      </div>
+    </div>
+    <div class="brochure-card">
+      <div class="brochure-thumb" style="background:#f0fdf4;color:#16a34a">
+        📄
+        <span style="font-size:11px;color:#16a34a;font-weight:500">Cheat sheet</span>
+        <span class="brochure-pages">8 pág</span>
+      </div>
+      <div class="brochure-body">
+        <h4>Combinaciones tipográficas</h4>
+        <p>Los mejores pares de fuentes</p>
+      </div>
+      <div class="brochure-footer">
+        <span class="brochure-price">$8</span>
+        <button class="btn-sm">↓ Comprar</button>
+      </div>
+    </div>
+    <div class="brochure-card">
+      <div class="brochure-thumb" style="background:#fff7ed;color:#ea580c">
+        📄
+        <span style="font-size:11px;color:#ea580c;font-weight:500">Plantilla</span>
+        <span class="brochure-pages">16 pág</span>
+      </div>
+      <div class="brochure-body">
+        <h4>Brief de branding para clientes</h4>
+        <p>Formulario profesional editable</p>
+      </div>
+      <div class="brochure-footer">
+        <span class="brochure-price">$15</span>
+        <button class="btn-sm">↓ Comprar</button>
+      </div>
+    </div>
+    <div class="brochure-card">
+      <div class="brochure-thumb" style="background:#faf5ff;color:#9333ea">
+        📄
+        <span style="font-size:11px;color:#9333ea;font-weight:500">Guía completa</span>
+        <span class="brochure-pages">36 pág</span>
+      </div>
+      <div class="brochure-body">
+        <h4>Sistema de diseño para marcas</h4>
+        <p>Tokens, estilos y componentes</p>
+      </div>
+      <div class="brochure-footer">
+        <span class="brochure-price">$22</span>
+        <button class="btn-sm">↓ Comprar</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="cta-section">
+  <div>
+    <h2>¿Listo para llevar tu diseño al siguiente nivel?</h2>
+    <p>Únete a más de 1,200 diseñadores que ya están creciendo con nuestros cursos.</p>
+  </div>
+  <button class="btn-white">Explorar todos los cursos →</button>
+</div>
+
+<footer>
+  <div class="logo" style="font-size:16px">Creative<span style="color:#2563eb">Studio</span></div>
+  <span>© 2025 CreativeStudio. Todos los derechos reservados.</span>
+  <div style="display:flex;gap:20px">
+    <a href="#" style="color:var(--gray-400);text-decoration:none">Términos</a>
+    <a href="#" style="color:var(--gray-400);text-decoration:none">Privacidad</a>
+    <a href="#" style="color:var(--gray-400);text-decoration:none">Contacto</a>
+  </div>
+</footer>
+
+</body>
+</html>
